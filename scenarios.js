@@ -1,6 +1,8 @@
 const SCENARIOS = [
+    // difficulty: 1=簡単, 2=普通, 3=難しい
     {
         id: 1,
+        difficulty: 1,
         character: { avatar: "👨‍💼", role: "プロダクトオーナー", name: "田中" },
         dialogue: "「デイリースクラム？あー、私は忙しいから週一でまとめて報告受けるよ。」",
         document: {
@@ -16,7 +18,7 @@ const SCENARIOS = [
         antipattern: "デイリースクラムの頻度を下げる"
     },
     {
-        id: 2,
+        id: 2, difficulty: 1,
         character: { avatar: "👩‍💻", role: "スクラムマスター", name: "鈴木" },
         dialogue: "「レトロスペクティブで決めた改善アクション、ちゃんと次のスプリントで実施してます！」",
         document: {
@@ -32,7 +34,7 @@ const SCENARIOS = [
         antipattern: "レトロスペクティブが反省会だけで終わる"
     },
     {
-        id: 3,
+        id: 3, difficulty: 1,
         character: { avatar: "👨", role: "テックリード", name: "佐藤" },
         dialogue: "「スプリント中だけど、上から緊急の追加要件が来たから入れるよ。」",
         document: {
@@ -48,7 +50,7 @@ const SCENARIOS = [
         antipattern: "スプリント中に要件を追加する"
     },
     {
-        id: 4,
+        id: 4, difficulty: 1,
         character: { avatar: "👩", role: "開発者", name: "山田" },
         dialogue: "「私たちのチームはペアプロでコードレビューして、知識を共有してます！」",
         document: {
@@ -64,7 +66,7 @@ const SCENARIOS = [
         antipattern: "特定の人しか知らないコードがある"
     },
     {
-        id: 5,
+        id: 5, difficulty: 1,
         character: { avatar: "👴", role: "部長", name: "高橋" },
         dialogue: "「スクラムマスターには進捗報告をしっかりさせてるから大丈夫だ。」",
         document: {
@@ -81,7 +83,7 @@ const SCENARIOS = [
     },
     // --- 追加シナリオ 6-10 ---
     {
-        id: 6,
+        id: 6, difficulty: 2,
         character: { avatar: "👨‍🦳", role: "開発者", name: "伊藤" },
         dialogue: "「見積もりは私が全部やっておきました。効率的でしょ？」",
         document: {
@@ -97,7 +99,7 @@ const SCENARIOS = [
         antipattern: "一人が見積もりを決める"
     },
     {
-        id: 7,
+        id: 7, difficulty: 2,
         character: { avatar: "👩‍🦰", role: "プロダクトオーナー", name: "中村" },
         dialogue: "「バックログは優先順位つけて整理してます。ステークホルダーとも定期的に話してます。」",
         document: {
@@ -113,7 +115,7 @@ const SCENARIOS = [
         antipattern: "バックログが整理されていない"
     },
     {
-        id: 8,
+        id: 8, difficulty: 2,
         character: { avatar: "👴", role: "マネージャー", name: "渡辺" },
         dialogue: "「スプリントレビュー？デモ見せてもらえればいいよ。フィードバックは特にないかな。」",
         document: {
@@ -129,7 +131,7 @@ const SCENARIOS = [
         antipattern: "スプリントレビューがデモだけで終わる"
     },
     {
-        id: 9,
+        id: 9, difficulty: 2,
         character: { avatar: "👨‍💻", role: "開発者", name: "小林" },
         dialogue: "「Doneの定義？まあ動けばDoneでしょ。テストはあとで誰かやるよ。」",
         document: {
@@ -145,7 +147,7 @@ const SCENARIOS = [
         antipattern: "完成の定義が曖昧なまま進める"
     },
     {
-        id: 10,
+        id: 10, difficulty: 2,
         character: { avatar: "👩‍🔬", role: "スクラムマスター", name: "加藤" },
         dialogue: "「チームの障害を取り除くのが私の仕事。今日も他部署と調整してきました！」",
         document: {
@@ -162,7 +164,7 @@ const SCENARIOS = [
     },
     // --- 追加シナリオ 11-15 + レジェンド ---
     {
-        id: 11,
+        id: 11, difficulty: 2,
         character: { avatar: "👨‍🏫", role: "スクラム共同創設者", name: "ジェフ・サザーランド" },
         dialogue: "「Scrum is not a methodology. It's a framework. The team decides how to do the work.」",
         document: {
@@ -178,7 +180,7 @@ const SCENARIOS = [
         antipattern: "スクラムを厳密なルールとして強制する"
     },
     {
-        id: 12,
+        id: 12, difficulty: 2,
         character: { avatar: "🧔", role: "スクラム共同創設者", name: "ケン・シュエイバー" },
         dialogue: "「Scrum exposes the truth. It doesn't solve your problems, it makes them visible.」",
         document: {
@@ -194,7 +196,7 @@ const SCENARIOS = [
         antipattern: "問題を隠してスクラムを形骸化する"
     },
     {
-        id: 13,
+        id: 13, difficulty: 3,
         character: { avatar: "👨‍✈️", role: "アジャイルコーチ", name: "ジェフ・サザーランド(??)" },
         dialogue: "「スクラムは毎日3時間のミーティングが必須だよ。私が作ったんだから。」",
         document: {
@@ -210,7 +212,7 @@ const SCENARIOS = [
         antipattern: "デイリースクラムを長時間の会議にする"
     },
     {
-        id: 14,
+        id: 14, difficulty: 3,
         character: { avatar: "🧔‍♂️", role: "アジャイル専門家", name: "ケン・シュエイバー(??)" },
         dialogue: "「スクラムマスターはチームのボスだよ。タスクを割り振るのが仕事さ。」",
         document: {
@@ -226,7 +228,7 @@ const SCENARIOS = [
         antipattern: "SMをマネージャーやボスとして扱う"
     },
     {
-        id: 15,
+        id: 15, difficulty: 1,
         character: { avatar: "👩‍🚀", role: "開発者", name: "松本" },
         dialogue: "「昨日やったこと、今日やること、困ってること。シンプルに共有してます！」",
         document: {
@@ -243,7 +245,7 @@ const SCENARIOS = [
     },
     // --- 追加シナリオ 16-20 ---
     {
-        id: 16,
+        id: 16, difficulty: 2,
         character: { avatar: "👨‍💼", role: "プロダクトオーナー", name: "山内" },
         dialogue: "「バックログの優先順位？まあ、都度変わるけどいいよね？」",
         document: {
@@ -259,7 +261,7 @@ const SCENARIOS = [
         antipattern: "優先順位が曖昧なまま進める"
     },
     {
-        id: 17,
+        id: 17, difficulty: 2,
         character: { avatar: "👩‍🏭", role: "スクラムマスター", name: "清水" },
         dialogue: "「ベロシティが安定してきたので、予測可能なデリバリーができてます！」",
         document: {
@@ -275,7 +277,7 @@ const SCENARIOS = [
         antipattern: "ベロシティを無視して計画を立てる"
     },
     {
-        id: 18,
+        id: 18, difficulty: 2,
         character: { avatar: "👨‍🎨", role: "開発者", name: "木村" },
         dialogue: "「スプリントゴールがないけど、とりあえずタスクこなしてます。」",
         document: {
@@ -291,7 +293,7 @@ const SCENARIOS = [
         antipattern: "スプリントゴールなしで進める"
     },
     {
-        id: 19,
+        id: 19, difficulty: 3,
         character: { avatar: "👵", role: "部長", name: "森" },
         dialogue: "「スクラム入れても納期は絶対守れよ。品質？後でいい。」",
         document: {
@@ -307,7 +309,7 @@ const SCENARIOS = [
         antipattern: "納期のために品質を犠牲にする"
     },
     {
-        id: 20,
+        id: 20, difficulty: 3,
         character: { avatar: "🧑‍💻", role: "開発チーム", name: "チームパイ" },
         dialogue: "「私たちはクロスファンクショナルなチームです。誰でもどのタスクもできます！」",
         document: {

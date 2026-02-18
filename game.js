@@ -29,8 +29,22 @@ class ScrumGuard {
         return arr;
     }
 
+    prepareScenarios() {
+        // 難易度別にグループ化してシャッフル
+        const easy = this.shuffleArray(SCENARIOS.filter(s => s.difficulty === 1));
+        const medium = this.shuffleArray(SCENARIOS.filter(s => s.difficulty === 2));
+        const hard = this.shuffleArray(SCENARIOS.filter(s => s.difficulty === 3));
+        
+        // 簡単→3つ、普通→5つ、難しい→4つの順で出題
+        return [
+            ...easy.slice(0, 3),
+            ...medium.slice(0, 5),
+            ...hard.slice(0, 4)
+        ];
+    }
+
     startGame() {
-        this.shuffledScenarios = this.shuffleArray(SCENARIOS);
+        this.shuffledScenarios = this.prepareScenarios();
         this.showScreen('game-screen');
         this.updateRules();
         this.loadScenario();
