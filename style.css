@@ -498,14 +498,22 @@ footer {
 /* ゲームオーバー */
 #gameover-screen {
     background: linear-gradient(135deg, var(--bg-dark) 0%, #0a0a15 100%);
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
 }
 
 .gameover-content {
     text-align: center;
     max-width: 700px;
-    padding: 2rem;
+    padding: 1rem;
+    flex: 1;
+    overflow-y: auto;
+    margin: 0.5rem;
+}
+
+#gameover-screen .stamp-btn {
+    margin: 1rem;
+    margin-bottom: 2.5rem;
+    flex-shrink: 0;
 }
 
 .gameover-content h2 {
@@ -739,24 +747,38 @@ footer {
     
     /* ゲームオーバー */
     .gameover-content {
-        padding: 1rem;
+        padding: 0.5rem;
     }
     
     .gameover-content h2 {
-        font-size: 2rem;
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
     }
     
     .final-score {
-        font-size: 1.5rem;
+        font-size: 1.2rem;
+    }
+    
+    .final-stats {
+        font-size: 0.9rem;
     }
     
     .learned-section {
-        padding: 1rem;
+        padding: 0.8rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .learned-section h3 {
+        font-size: 1rem;
     }
     
     .learned-section ul {
         margin-left: 1rem;
-        font-size: 0.85rem;
+        font-size: 0.8rem;
+    }
+    
+    #gameover-screen .stamp-btn {
+        margin-bottom: 2.5rem;
     }
     
     .stamp-btn {
