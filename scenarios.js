@@ -81,6 +81,88 @@ const SCENARIOS = [
     }
 ];
 
+    // --- 追加シナリオ 6-10 ---
+    {
+        id: 6,
+        character: { avatar: "👨‍🦳", role: "開発者", name: "伊藤" },
+        dialogue: "「見積もりは私が全部やっておきました。効率的でしょ？」",
+        document: {
+            teamName: "チームゼータ",
+            sprintLength: "2週間",
+            estimation: "リーダーが単独で実施",
+            planningPoker: "未実施",
+            notes: "チーム全員での見積もりをしていない"
+        },
+        isAntipattern: true,
+        explanation: "見積もりはチーム全員で行うべきです。プランニングポーカーなどで全員の知見を集めることで精度が上がります。",
+        practice: "見積もりはチーム全員で行う",
+        antipattern: "一人が見積もりを決める"
+    },
+    {
+        id: 7,
+        character: { avatar: "👩‍🦰", role: "プロダクトオーナー", name: "中村" },
+        dialogue: "「バックログは優先順位つけて整理してます。ステークホルダーとも定期的に話してます。」",
+        document: {
+            teamName: "チームイータ",
+            sprintLength: "2週間",
+            backlogRefinement: "週1回実施",
+            stakeholderComm: "定期的に実施",
+            notes: "バックログが常に整理されている"
+        },
+        isAntipattern: false,
+        explanation: "POがバックログを適切に管理し、ステークホルダーと連携するのは理想的です。",
+        practice: "バックログリファインメントを定期的に行う",
+        antipattern: "バックログが整理されていない"
+    },
+    {
+        id: 8,
+        character: { avatar: "👴", role: "マネージャー", name: "渡辺" },
+        dialogue: "「スプリントレビュー？デモ見せてもらえればいいよ。フィードバックは特にないかな。」",
+        document: {
+            teamName: "チームシータ",
+            sprintLength: "2週間",
+            sprintReview: "デモのみ実施",
+            stakeholderFeedback: "ほぼなし",
+            notes: "レビューがデモ会になっている"
+        },
+        isAntipattern: true,
+        explanation: "スプリントレビューは単なるデモではありません。ステークホルダーからフィードバックを得て、プロダクトバックログを調整する場です。",
+        practice: "スプリントレビューでフィードバックを収集する",
+        antipattern: "スプリントレビューがデモだけで終わる"
+    },
+    {
+        id: 9,
+        character: { avatar: "👨‍💻", role: "開発者", name: "小林" },
+        dialogue: "「Doneの定義？まあ動けばDoneでしょ。テストはあとで誰かやるよ。」",
+        document: {
+            teamName: "チームイオタ",
+            sprintLength: "2週間",
+            definitionOfDone: "明文化されていない",
+            testing: "後回し",
+            notes: "完成の定義が曖昧"
+        },
+        isAntipattern: true,
+        explanation: "Definition of Done（完成の定義）はチームで明確に定義し、全員が守るべきです。",
+        practice: "Doneの定義を明確にし、遵守する",
+        antipattern: "完成の定義が曖昧なまま進める"
+    },
+    {
+        id: 10,
+        character: { avatar: "👩‍🔬", role: "スクラムマスター", name: "加藤" },
+        dialogue: "「チームの障害を取り除くのが私の仕事。今日も他部署と調整してきました！」",
+        document: {
+            teamName: "チームカッパ",
+            sprintLength: "2週間",
+            impediments: "SMが積極的に解決",
+            teamSupport: "環境整備に注力",
+            notes: "SMがサーバントリーダーとして機能"
+        },
+        isAntipattern: false,
+        explanation: "スクラムマスターがチームの障害を取り除き、チームが集中できる環境を作るのは正しい役割です。",
+        practice: "SMはチームの障害を取り除く",
+        antipattern: "SMが障害を放置する"
+    },
+
 const RULES_BY_DAY = [
     ["デイリースクラムは毎日15分以内で実施", "スクラムマスターはマネージャーではない"],
     ["スプリント中のスコープ変更は禁止", "レトロスペクティブの改善は実行する"],
