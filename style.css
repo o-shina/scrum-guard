@@ -379,8 +379,7 @@ main {
 
 /* フッター */
 footer {
-    padding: 1rem 2rem;
-    padding-bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+    padding: 1rem 2rem 2rem 2rem;
     background: var(--bg-medium);
     border-top: 3px solid var(--bg-light);
     flex-shrink: 0;
@@ -690,7 +689,7 @@ footer {
     }
     
     footer {
-        padding: 0.8rem 1rem;
+        padding: 0.8rem 1rem 1.5rem 1rem;
     }
     
     .action-buttons {
