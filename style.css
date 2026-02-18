@@ -430,17 +430,32 @@ footer {
 /* 結果画面 */
 #result-screen {
     background: rgba(0,0,0,0.9);
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
 }
 
 .result-content {
     background: var(--bg-medium);
-    padding: 3rem;
+    padding: 1.5rem;
     border-radius: 10px;
     text-align: center;
     max-width: 600px;
     border: 2px solid var(--accent);
+    margin: 1rem;
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.result-content .result-feedback {
+    flex: 1;
+    overflow-y: auto;
+}
+
+#result-screen .stamp-btn {
+    margin: 1rem;
+    margin-bottom: 2.5rem;
+    flex-shrink: 0;
 }
 
 .result-content h2 {
@@ -703,18 +718,23 @@ footer {
     
     /* 結果画面 */
     .result-content {
-        padding: 1.5rem;
-        margin: 1rem;
+        padding: 1rem;
+        margin: 0.5rem;
         max-width: 95%;
     }
     
     .result-content h2 {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
     }
     
     .result-feedback {
         font-size: 0.85rem;
-        padding: 1rem;
+        padding: 0.8rem;
+    }
+    
+    #result-screen .stamp-btn {
+        margin-bottom: 2.5rem;
     }
     
     /* ゲームオーバー */
