@@ -560,3 +560,206 @@ footer {
 ::-webkit-scrollbar-thumb:hover {
     background: var(--accent);
 }
+
+/* ===================
+   モバイル対応
+   =================== */
+@media (max-width: 768px) {
+    .title-content h1 {
+        font-size: 2.5rem;
+        letter-spacing: 0.2rem;
+    }
+    
+    .subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .title-art {
+        display: none;
+    }
+    
+    .instruction {
+        font-size: 0.9rem;
+        padding: 0 1rem;
+    }
+    
+    header {
+        flex-wrap: wrap;
+        padding: 0.5rem 1rem;
+        gap: 0.5rem;
+    }
+    
+    .header-left, .header-right {
+        gap: 0.8rem;
+        font-size: 0.85rem;
+    }
+    
+    .title {
+        font-size: 1rem;
+        order: -1;
+        width: 100%;
+        text-align: center;
+    }
+    
+    main {
+        flex-direction: column;
+        padding: 0.5rem;
+        gap: 0.5rem;
+        overflow-y: auto;
+    }
+    
+    .left-panel, .right-panel {
+        flex: none;
+    }
+    
+    .booth-window {
+        padding: 1rem;
+        min-height: 150px;
+    }
+    
+    .character-avatar {
+        font-size: 4rem;
+    }
+    
+    .character-role {
+        font-size: 0.8rem;
+    }
+    
+    .character-name {
+        font-size: 1.2rem;
+    }
+    
+    .team-members {
+        font-size: 1.5rem;
+    }
+    
+    .dialogue-box {
+        padding: 1rem;
+        min-height: 80px;
+    }
+    
+    .dialogue-box p {
+        font-size: 0.95rem;
+    }
+    
+    .document {
+        padding: 1rem;
+        max-height: 200px;
+    }
+    
+    .document-header {
+        font-size: 1rem;
+    }
+    
+    .document-content {
+        font-size: 0.85rem;
+    }
+    
+    .stamp-area {
+        width: 70px;
+        height: 70px;
+        bottom: 10px;
+        right: 10px;
+    }
+    
+    .stamp {
+        font-size: 0.7rem;
+    }
+    
+    .rule-book {
+        padding: 0.8rem;
+        max-height: 120px;
+    }
+    
+    .rule-header {
+        font-size: 0.85rem;
+    }
+    
+    .rule-content {
+        font-size: 0.75rem;
+    }
+    
+    footer {
+        padding: 0.8rem 1rem;
+    }
+    
+    .action-buttons {
+        gap: 1rem;
+    }
+    
+    .action-btn {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+    }
+    
+    /* 結果画面 */
+    .result-content {
+        padding: 1.5rem;
+        margin: 1rem;
+        max-width: 95%;
+    }
+    
+    .result-content h2 {
+        font-size: 1.5rem;
+    }
+    
+    .result-feedback {
+        font-size: 0.85rem;
+        padding: 1rem;
+    }
+    
+    /* ゲームオーバー */
+    .gameover-content {
+        padding: 1rem;
+    }
+    
+    .gameover-content h2 {
+        font-size: 2rem;
+    }
+    
+    .final-score {
+        font-size: 1.5rem;
+    }
+    
+    .learned-section {
+        padding: 1rem;
+    }
+    
+    .learned-section ul {
+        margin-left: 1rem;
+        font-size: 0.85rem;
+    }
+    
+    .stamp-btn {
+        padding: 0.8rem 2rem;
+        font-size: 1rem;
+    }
+}
+
+/* さらに小さい画面 */
+@media (max-width: 480px) {
+    .title-content h1 {
+        font-size: 2rem;
+    }
+    
+    .character-avatar {
+        font-size: 3rem;
+    }
+    
+    .booth-window {
+        min-height: 120px;
+    }
+    
+    .action-btn {
+        padding: 0.7rem 1rem;
+        font-size: 0.9rem;
+    }
+    
+    .document {
+        max-height: 180px;
+    }
+    
+    .rule-book {
+        max-height: 100px;
+    }
+}
