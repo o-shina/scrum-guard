@@ -245,8 +245,93 @@ const SCENARIOS = [
         antipattern: "デイリースクラムが報告会になる"
     },
 
+    // --- 追加シナリオ 16-20 ---
+    {
+        id: 16,
+        character: { avatar: "👨‍💼", role: "プロダクトオーナー", name: "山内" },
+        dialogue: "「バックログの優先順位？まあ、都度変わるけどいいよね？」",
+        document: {
+            teamName: "チームミュー",
+            sprintLength: "2週間",
+            backlogPriority: "頻繁に変更",
+            poDecision: "曖昧",
+            notes: "POが優先順位を明確にしていない"
+        },
+        isAntipattern: true,
+        explanation: "プロダクトオーナーはバックログの優先順位を明確にし、チームに明確な方向性を示す必要があります。",
+        practice: "POはバックログの優先順位を明確にする",
+        antipattern: "優先順位が曖昧なまま進める"
+    },
+    {
+        id: 17,
+        character: { avatar: "👩‍🏭", role: "スクラムマスター", name: "清水" },
+        dialogue: "「ベロシティが安定してきたので、予測可能なデリバリーができてます！」",
+        document: {
+            teamName: "チームニュー",
+            sprintLength: "2週間",
+            velocity: "安定（20-25pt）",
+            predictability: "高い",
+            notes: "ベロシティが安定している"
+        },
+        isAntipattern: false,
+        explanation: "ベロシティが安定すると予測可能性が高まり、計画が立てやすくなります。",
+        practice: "ベロシティを計測し予測可能性を高める",
+        antipattern: "ベロシティを無視して計画を立てる"
+    },
+    {
+        id: 18,
+        character: { avatar: "👨‍🎨", role: "開発者", name: "木村" },
+        dialogue: "「スプリントゴールがないけど、とりあえずタスクこなしてます。」",
+        document: {
+            teamName: "チームクシー",
+            sprintLength: "2週間",
+            sprintGoal: "未設定",
+            focus: "タスク消化のみ",
+            notes: "スプリントゴールがない"
+        },
+        isAntipattern: true,
+        explanation: "スプリントゴールはチームの方向性を統一する重要な要素です。必ず設定しましょう。",
+        practice: "スプリントゴールを明確に設定する",
+        antipattern: "スプリントゴールなしで進める"
+    },
+    {
+        id: 19,
+        character: { avatar: "👵", role: "部長", name: "森" },
+        dialogue: "「スクラム入れても納期は絶対守れよ。品質？後でいい。」",
+        document: {
+            teamName: "チームオメガ",
+            sprintLength: "2週間",
+            deadline: "絶対遵守",
+            qualityCompromise: "あり",
+            notes: "品質を犠牲にして納期を守る圧力"
+        },
+        isAntipattern: true,
+        explanation: "アジャイルでは品質は交渉不可。スコープを調整して品質を保ちましょう。",
+        practice: "品質は交渉不可、スコープで調整",
+        antipattern: "納期のために品質を犠牲にする"
+    },
+    {
+        id: 20,
+        character: { avatar: "🧑‍💻", role: "開発チーム", name: "チームパイ" },
+        dialogue: "「私たちはクロスファンクショナルなチームです。誰でもどのタスクもできます！」",
+        document: {
+            teamName: "チームパイ",
+            sprintLength: "2週間",
+            crossFunctional: "完全に実現",
+            tShaped: "メンバー全員T型スキル",
+            notes: "自己完結型チームが実現できている"
+        },
+        isAntipattern: false,
+        explanation: "クロスファンクショナルなチームはスクラムの理想。外部依存なく価値を届けられます。",
+        practice: "クロスファンクショナルなチームを作る",
+        antipattern: "サイロ化された専門チームのまま"
+    },
+
 const RULES_BY_DAY = [
     ["デイリースクラムは毎日15分以内で実施", "スクラムマスターはマネージャーではない"],
     ["スプリント中のスコープ変更は禁止", "レトロスペクティブの改善は実行する"],
-    ["チームは自己組織化されるべき", "知識の属人化を防ぐ"]
+    ["チームは自己組織化されるべき", "知識の属人化を防ぐ"],
+    ["Doneの定義を明確にする", "見積もりはチーム全員で行う"],
+    ["スプリントゴールを必ず設定する", "スクラムはフレームワークであり方法論ではない"],
+    ["品質は交渉不可", "クロスファンクショナルチームを目指す"]
 ];
