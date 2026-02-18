@@ -606,6 +606,7 @@ footer {
         padding: 0.5rem;
         gap: 0.5rem;
         overflow-y: auto;
+        max-height: calc(100vh - 140px);
     }
     
     .left-panel, .right-panel {
