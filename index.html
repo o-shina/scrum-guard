@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scrum Guard - スクラムの門番</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game-container">
+        <!-- タイトル画面 -->
+        <div id="title-screen" class="screen active">
+            <div class="title-content">
+                <h1>SCRUM GUARD</h1>
+                <p class="subtitle">スクラムの門番</p>
+                <div class="title-art">
+                    <pre>
+    ╔═══════════════════════════════╗
+    ║  AGILE CHECKPOINT  ║
+    ║      🛂 STOP 🛂      ║
+    ╚═══════════════════════════════╝
+                    </pre>
+                </div>
+                <p class="instruction">あなたはスクラムゲートの検問官。<br>正しいスクラムを実践するチームを通し、<br>アンチパターンを踏むチームを連行せよ。</p>
+                <button id="start-btn" class="stamp-btn">ゲーム開始</button>
+            </div>
+        </div>
+
+        <!-- ゲーム画面 -->
+        <div id="game-screen" class="screen">
+            <header>
+                <div class="header-left">
+                    <span class="day-counter">スプリント <span id="day">1</span></span>
+                </div>
+                <div class="header-center">
+                    <span class="title">SCRUM GUARD</span>
+                </div>
+                <div class="header-right">
+                    <span class="score">スコア: <span id="score">0</span></span>
+                    <span class="strikes">❌ <span id="strikes">0</span>/3</span>
+                </div>
+            </header>
+
+            <main>
+                <!-- 左側：チーム情報 -->
+                <div class="left-panel">
+                    <div class="booth-window">
+                        <div id="character-display">
+                            <div class="character-avatar" id="avatar">👤</div>
+                            <div class="character-role" id="role">役職</div>
+                            <div class="character-name" id="char-name">名前</div>
+                        </div>
+                    </div>
+                    <div class="dialogue-box">
+                        <p id="dialogue">「次の方、どうぞ。」</p>
+                    </div>
+                </div>
+
+                <!-- 右側：書類とスタンプ -->
+                <div class="right-panel">
+                    <div class="document" id="document">
+                        <div class="document-header">チーム申請書</div>
+                        <div class="document-content" id="document-content">
+                            <!-- 動的に内容が入る -->
+                        </div>
+                        <div class="stamp-area" id="stamp-area"></div>
+                    </div>
+                    
+                    <div class="rule-book" id="rule-book">
+                        <div class="rule-header">📖 スクラムガイド (参照用)</div>
+                        <div class="rule-content" id="rule-content">
+                            <p><strong>今日の確認項目:</strong></p>
+                            <ul id="rules-list"></ul>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <footer>
+                <div class="action-buttons">
+                    <button id="approve-btn" class="action-btn approve" disabled>
+                        ✓ 通過許可
+                    </button>
+                    <button id="deny-btn" class="action-btn deny" disabled>
+                        ✗ 連行
+                    </button>
+                </div>
+            </footer>
+        </div>
+
+        <!-- 結果画面 -->
+        <div id="result-screen" class="screen">
+            <div class="result-content">
+                <h2 id="result-title">判定結果</h2>
+                <div class="result-feedback" id="result-feedback"></div>
+                <button id="next-btn" class="stamp-btn">次へ</button>
+            </div>
+        </div>
+
+        <!-- ゲームオーバー画面 -->
+        <div id="gameover-screen" class="screen">
+            <div class="gameover-content">
+                <h2>業務終了</h2>
+                <p class="final-score">最終スコア: <span id="final-score">0</span></p>
+                <p class="final-stats" id="final-stats"></p>
+                <div class="learned-section">
+                    <h3>今日学んだこと</h3>
+                    <ul id="learned-list"></ul>
+                </div>
+                <button id="restart-btn" class="stamp-btn">もう一度プレイ</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="scenarios.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>
