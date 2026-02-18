@@ -163,6 +163,88 @@ const SCENARIOS = [
         antipattern: "SMが障害を放置する"
     },
 
+    // --- 追加シナリオ 11-15 + レジェンド ---
+    {
+        id: 11,
+        character: { avatar: "👨‍🏫", role: "スクラム共同創設者", name: "ジェフ・サザーランド" },
+        dialogue: "「Scrum is not a methodology. It's a framework. The team decides how to do the work.」",
+        document: {
+            teamName: "スクラムアライアンス",
+            sprintLength: "1-4週間",
+            teamAutonomy: "チームが自己組織化",
+            credential: "スクラムガイド共同執筆者",
+            notes: "フレームワークの本質を理解している"
+        },
+        isAntipattern: false,
+        explanation: "ジェフ・サザーランド氏はスクラムの共同創設者。スクラムは方法論ではなくフレームワークであり、チームがやり方を決めます。",
+        practice: "スクラムはフレームワーク、チームが自律的に動く",
+        antipattern: "スクラムを厳密なルールとして強制する"
+    },
+    {
+        id: 12,
+        character: { avatar: "🧔", role: "スクラム共同創設者", name: "ケン・シュエイバー" },
+        dialogue: "「Scrum exposes the truth. It doesn't solve your problems, it makes them visible.」",
+        document: {
+            teamName: "Scrum.org",
+            sprintLength: "1-4週間",
+            transparency: "透明性を重視",
+            credential: "スクラムガイド共同執筆者",
+            notes: "スクラムの精神を体現している"
+        },
+        isAntipattern: false,
+        explanation: "ケン・シュエイバー氏はスクラムの共同創設者。スクラムは問題を可視化するフレームワークです。",
+        practice: "スクラムで問題を可視化し、改善する",
+        antipattern: "問題を隠してスクラムを形骸化する"
+    },
+    {
+        id: 13,
+        character: { avatar: "👨‍✈️", role: "アジャイルコーチ", name: "ジェフ・サザーランド(??)" },
+        dialogue: "「スクラムは毎日3時間のミーティングが必須だよ。私が作ったんだから。」",
+        document: {
+            teamName: "フェイクコンサル",
+            sprintLength: "1ヶ月",
+            dailyScrum: "3時間",
+            credential: "自称スクラム創設者",
+            notes: "デイリースクラムは15分が基本"
+        },
+        isAntipattern: true,
+        explanation: "これは偶物です！デイリースクラムは15分以内が基本。本物のジェフはそんなこと言いません。",
+        practice: "デイリースクラムは15分以内",
+        antipattern: "デイリースクラムを長時間の会議にする"
+    },
+    {
+        id: 14,
+        character: { avatar: "🧔‍♂️", role: "アジャイル専門家", name: "ケン・シュエイバー(??)" },
+        dialogue: "「スクラムマスターはチームのボスだよ。タスクを割り振るのが仕事さ。」",
+        document: {
+            teamName: "フェイクアジャイル",
+            sprintLength: "2週間",
+            smRole: "タスク管理者",
+            credential: "自称スクラム創設者",
+            notes: "SMはマネージャーではない"
+        },
+        isAntipattern: true,
+        explanation: "これは偶物です！スクラムマスターはマネージャーではなくサーバントリーダー。タスク割り振りはしません。",
+        practice: "SMはサーバントリーダー、ボスではない",
+        antipattern: "SMをマネージャーやボスとして扱う"
+    },
+    {
+        id: 15,
+        character: { avatar: "👩‍🚀", role: "開発者", name: "松本" },
+        dialogue: "「昨日やったこと、今日やること、困ってること。シンプルに共有してます！」",
+        document: {
+            teamName: "チームラムダ",
+            sprintLength: "2週間",
+            dailyScrum: "毎日15分",
+            threeQuestions: "実践中",
+            notes: "デイリースクラムが機能している"
+        },
+        isAntipattern: false,
+        explanation: "デイリースクラムの3つの質問（昨日・今日・障害）を守って短く共有するのは良いプラクティスです。",
+        practice: "デイリースクラムは3つの質問で短く",
+        antipattern: "デイリースクラムが報告会になる"
+    },
+
 const RULES_BY_DAY = [
     ["デイリースクラムは毎日15分以内で実施", "スクラムマスターはマネージャーではない"],
     ["スプリント中のスコープ変更は禁止", "レトロスペクティブの改善は実行する"],
