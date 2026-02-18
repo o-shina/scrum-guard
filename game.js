@@ -246,10 +246,23 @@ class ScrumGuard {
         this.loadScenario();
     }
 
+    getEnding() {
+        const rate = this.correctCount / this.totalCount;
+        if (rate >= 0.9) return { rank: 'S', title: '伝説のスクラムマスター', msg: 'あなたはスクラムの化身だ！ジェフもケンも認める実力。', color: '#ffd700' };
+        if (rate >= 0.7) return { rank: 'A', title: '優秀なアジャイルコーチ', msg: 'チームを正しく導ける力がある。', color: '#4ecca3' };
+        if (rate >= 0.5) return { rank: 'B', title: '見習いスクラム実践者', msg: 'もう少し学べば一人前になれる。', color: '#87ceeb' };
+        if (rate >= 0.3) return { rank: 'C', title: 'アジャイル初心者', msg: 'スクラムガイドを読み直そう。', color: '#f0a500' };
+        return { rank: 'D', title: 'ウォーターフォール型信者', msg: 'スクラムとウォーターフォールの区別がついていない…', color: '#e94560' };
+    }
+
     endGame() {
+        const ending = this.getEnding();
         document.getElementById('final-score').textContent = this.score;
-        document.getElementById('final-stats').textContent = 
-            `正答率: ${this.correctCount}/${this.totalCount} (${Math.round(this.correctCount/this.totalCount*100) || 0}%)`;
+        document.getElementById('final-stats').innerHTML = 
+            `<span style="font-size:3rem;color:${ending.color}">${ending.rank}</span><br>
+             <span style="font-size:1.5rem;color:${ending.color}">${ending.title}</span><br>
+             <span>${ending.msg}</span><br><br>
+             正答率: ${this.correctCount}/${this.totalCount} (${Math.round(this.correctCount/this.totalCount*100) || 0}%)`;
         
         const learnedList = document.getElementById('learned-list');
         learnedList.innerHTML = this.learned.map(l => 
