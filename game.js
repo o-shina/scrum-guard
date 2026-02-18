@@ -127,6 +127,15 @@ class ScrumGuard {
         avatar.textContent = s.character.avatar;
         document.getElementById('role').textContent = s.character.role;
         document.getElementById('char-name').textContent = s.character.name;
+        
+        // チームメンバー表示
+        const teamDiv = document.getElementById('team-members');
+        if (s.teamMembers && s.teamMembers.length > 0) {
+            teamDiv.innerHTML = s.teamMembers.map(m => `<span class="team-member">${m}</span>`).join('');
+        } else {
+            teamDiv.innerHTML = '';
+        }
+        
         document.getElementById('dialogue').textContent = s.dialogue;
         
         let docHtml = '';

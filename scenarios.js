@@ -52,6 +52,7 @@ const SCENARIOS = [
     {
         id: 4, difficulty: 1,
         character: { avatar: "👩", role: "開発者", name: "山田" },
+        teamMembers: ["👨‍💻", "👩‍💻", "🧑‍💻"],
         dialogue: "「私たちのチームはペアプロでコードレビューして、知識を共有してます！」",
         document: {
             teamName: "チームデルタ",
@@ -311,6 +312,7 @@ const SCENARIOS = [
     {
         id: 20, difficulty: 3,
         character: { avatar: "🧑‍💻", role: "開発チーム", name: "チームパイ" },
+        teamMembers: ["👨‍💻", "👩‍🎨", "🧑‍🔬", "👩‍💼"],
         dialogue: "「私たちはクロスファンクショナルなチームです。誰でもどのタスクもできます！」",
         document: {
             teamName: "チームパイ",
