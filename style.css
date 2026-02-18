@@ -185,6 +185,24 @@ main {
     animation: bobbing 2s ease-in-out infinite;
 }
 
+.character-avatar.enter {
+    animation: slideIn 0.5s ease-out;
+}
+
+.character-avatar.exit {
+    animation: slideOut 0.5s ease-in forwards;
+}
+
+@keyframes slideIn {
+    0% { transform: translateX(-200px); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideOut {
+    0% { transform: translateX(0); opacity: 1; }
+    100% { transform: translateX(200px); opacity: 0; }
+}
+
 @keyframes bobbing {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-10px); }

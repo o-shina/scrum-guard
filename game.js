@@ -121,7 +121,10 @@ class ScrumGuard {
         this.currentScenario = this.shuffledScenarios[this.scenarioIndex];
         const s = this.currentScenario;
         
-        document.getElementById('avatar').textContent = s.character.avatar;
+        const avatar = document.getElementById('avatar');
+        avatar.classList.remove('enter', 'exit');
+        avatar.classList.add('enter');
+        avatar.textContent = s.character.avatar;
         document.getElementById('role').textContent = s.character.role;
         document.getElementById('char-name').textContent = s.character.name;
         document.getElementById('dialogue').textContent = s.dialogue;
@@ -177,6 +180,9 @@ class ScrumGuard {
         const isCorrect = isDeny === this.currentScenario.isAntipattern;
         this.totalCount++;
         
+        const avatar = document.getElementById('avatar');
+        avatar.classList.remove('enter');
+        avatar.classList.add('exit');
         setTimeout(() => this.showResult(isCorrect), 800);
     }
 
