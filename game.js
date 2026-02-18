@@ -171,8 +171,7 @@ class ScrumGuard {
     }
 
     isWarningField(key, value) {
-        const warnings = ['notes', 'midSprintChange'];
-        return warnings.includes(key);
+        return false;
     }
 
     judge(isDeny) {
