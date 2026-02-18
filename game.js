@@ -1,3 +1,55 @@
+class SoundManager {
+    constructor() {
+        this.ctx = null;
+    }
+    
+    init() {
+        this.ctx = new (window.AudioContext || window.webkitAudioContext)();
+    }
+    
+    play(type) {
+        if (!this.ctx) this.init();
+        const ctx = this.ctx;
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        
+        switch(type) {
+            case 'stamp':
+                osc.frequency.value = 150;
+                osc.type = 'square';
+                gain.gain.setValueAtTime(0.3, ctx.currentTime);
+                gain.gain.exponentialDecayTo = 0.01;
+                gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.1);
+                osc.start(ctx.currentTime);
+                osc.stop(ctx.currentTime + 0.1);
+                break;
+            case 'correct':
+                osc.frequency.value = 523;
+                osc.type = 'sine';
+                gain.gain.setValueAtTime(0.2, ctx.currentTime);
+                osc.start(ctx.currentTime);
+                osc.frequency.setValueAtTime(659, ctx.currentTime + 0.1);
+                osc.frequency.setValueAtTime(784, ctx.currentTime + 0.2);
+                gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.4);
+                osc.stop(ctx.currentTime + 0.4);
+                break;
+            case 'wrong':
+                osc.frequency.value = 200;
+                osc.type = 'sawtooth';
+                gain.gain.setValueAtTime(0.2, ctx.currentTime);
+                osc.start(ctx.currentTime);
+                osc.frequency.setValueAtTime(150, ctx.currentTime + 0.15);
+                gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.3);
+                osc.stop(ctx.currentTime + 0.3);
+                break;
+        }
+    }
+}
+
+const sound = new SoundManager();
+
 class ScrumGuard {
     constructor() {
         this.score = 0;
@@ -115,6 +167,7 @@ class ScrumGuard {
         document.getElementById('approve-btn').disabled = true;
         document.getElementById('deny-btn').disabled = true;
         
+        sound.play('stamp');
         const stampArea = document.getElementById('stamp-area');
         const stamp = document.createElement('div');
         stamp.className = `stamp ${isDeny ? 'denied' : 'approved'}`;
@@ -133,11 +186,13 @@ class ScrumGuard {
         const feedback = document.getElementById('result-feedback');
         
         if (isCorrect) {
+            sound.play('correct');
             this.score += 100;
             this.correctCount++;
             title.textContent = '✓ 正解！';
             title.className = 'correct';
         } else {
+            sound.play('wrong');
             this.strikes++;
             title.textContent = '✗ 不正解...';
             title.className = 'incorrect';
