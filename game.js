@@ -231,11 +231,11 @@ class ScrumGuard {
             setTimeout(() => {
                 booth.classList.add('arrest-out');
                 booth.classList.remove('arrest-in');
-            }, 800);
+            }, 600);
             setTimeout(() => {
                 booth.classList.remove('arrest-out');
                 this.showResult(isCorrect);
-            }, 1900);
+            }, 1500);
         } else {
             // 通過アニメーション: 右へ退場
             avatar.classList.add('exit-approve');

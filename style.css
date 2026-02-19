@@ -212,7 +212,7 @@ main {
 
 /* 連行アニメーション: フェーズ1 - 警察登場 */
 .booth-window.arrest-in .police-avatar {
-    animation: policeSlideIn 0.6s ease-out forwards;
+    animation: policeSlideIn 0.4s ease-out forwards;
 }
 
 .booth-window.arrest-in .character-avatar {
@@ -221,12 +221,12 @@ main {
 
 /* 連行アニメーション: フェーズ2 - 一緒に左へ退場 */
 .booth-window.arrest-out #character-display {
-    animation: arrestedExit 0.8s ease-in forwards;
+    animation: arrestedExit 0.6s ease-in forwards;
 }
 
 .booth-window.arrest-out .police-avatar {
     opacity: 1;
-    animation: policeExit 0.8s ease-in forwards;
+    animation: policeExit 0.6s ease-in forwards;
 }
 
 @keyframes slideIn {
