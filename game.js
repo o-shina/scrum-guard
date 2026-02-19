@@ -130,10 +130,9 @@ class ScrumGuard {
         const s = this.currentScenario;
         
         const avatar = document.getElementById('avatar');
-        const police = document.getElementById('police');
-        const avatarRow = document.querySelector('.avatar-row');
+        const booth = document.getElementById('booth-window');
         avatar.classList.remove('enter', 'exit-approve');
-        avatarRow.classList.remove('arrest-in', 'arrest-out');
+        booth.classList.remove('arrest-in', 'arrest-out');
         avatar.classList.add('enter');
         avatar.textContent = s.character.avatar;
         document.getElementById('role').textContent = s.character.role;
@@ -223,21 +222,20 @@ class ScrumGuard {
         this.totalCount++;
         
         const avatar = document.getElementById('avatar');
-        const police = document.getElementById('police');
-        const avatarRow = document.querySelector('.avatar-row');
+        const booth = document.getElementById('booth-window');
         avatar.classList.remove('enter');
         
         if (isDeny) {
             // 連行アニメーション: 警察が右から登場 → 一緒に左へ退場
-            avatarRow.classList.add('arrest-in');
+            booth.classList.add('arrest-in');
             setTimeout(() => {
-                avatarRow.classList.remove('arrest-in');
-                avatarRow.classList.add('arrest-out');
-            }, 600);
+                booth.classList.add('arrest-out');
+                booth.classList.remove('arrest-in');
+            }, 800);
             setTimeout(() => {
-                avatarRow.classList.remove('arrest-out');
+                booth.classList.remove('arrest-out');
                 this.showResult(isCorrect);
-            }, 1400);
+            }, 1900);
         } else {
             // 通過アニメーション: 右へ退場
             avatar.classList.add('exit-approve');
