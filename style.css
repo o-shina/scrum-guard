@@ -23,12 +23,14 @@ body {
     background-color: var(--bg-dark);
     color: var(--text);
     min-height: 100vh;
+    min-height: 100dvh;
     overflow: hidden;
 }
 
 #game-container {
     width: 100vw;
     height: 100vh;
+    height: 100dvh;
     position: relative;
 }
 
@@ -383,6 +385,7 @@ footer {
     background: var(--bg-medium);
     border-top: 3px solid var(--bg-light);
     flex-shrink: 0;
+    z-index: 100;
 }
 
 .action-buttons {
@@ -616,7 +619,10 @@ footer {
     
     #game-screen {
         height: 100%;
+        height: 100dvh;
         overflow: hidden;
+        display: flex;
+        flex-direction: column;
     }
     
     main {
@@ -626,6 +632,7 @@ footer {
         overflow-y: auto;
         flex: 1;
         min-height: 0;
+        padding-bottom: 0.5rem;
     }
     
     .left-panel, .right-panel {
@@ -701,7 +708,17 @@ footer {
     }
     
     footer {
-        padding: 0.8rem 1rem 2.5rem 1rem;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 0.8rem 1rem;
+        padding-bottom: max(0.8rem, env(safe-area-inset-bottom));
+        z-index: 100;
+    }
+    
+    #game-screen main {
+        padding-bottom: 80px;
     }
     
     .action-buttons {
