@@ -5,21 +5,30 @@
 }
 
 :root {
-    --bg-dark: #1a1a2e;
-    --bg-medium: #16213e;
-    --bg-light: #0f3460;
-    --accent: #e94560;
+    --bg-dark: #0f0f1a;
+    --bg-medium: #1a1a2e;
+    --bg-light: #16213e;
+    --bg-card: rgba(26, 26, 46, 0.7);
+    --accent: #ff4d6d;
+    --accent-glow: rgba(255, 77, 109, 0.3);
     --accent-green: #4ecca3;
-    --text: #eaeaea;
-    --text-dim: #a0a0a0;
-    --paper: #f5e6d3;
-    --paper-dark: #d4c5b2;
-    --stamp-red: #c41e3a;
-    --stamp-green: #228b22;
+    --accent-green-glow: rgba(78, 204, 163, 0.3);
+    --text: #f0f0f0;
+    --text-dim: #8892b0;
+    --paper: #faf0e4;
+    --paper-dark: #e8d5be;
+    --stamp-red: #dc2626;
+    --stamp-green: #16a34a;
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-bg: rgba(255, 255, 255, 0.04);
+    --radius: 16px;
+    --radius-sm: 12px;
+    --radius-xs: 8px;
+    --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body {
-    font-family: 'Courier New', monospace;
+    font-family: 'Inter', 'Noto Sans JP', system-ui, -apple-system, sans-serif;
     background-color: var(--bg-dark);
     color: var(--text);
     min-height: 100vh;
@@ -45,11 +54,22 @@ body {
 
 .screen.active {
     display: flex;
+    animation: screenFadeIn 0.4s ease-out;
 }
 
-/* タイトル画面 */
+@keyframes screenFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* ==============================
+   タイトル画面
+   ============================== */
 #title-screen {
-    background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-medium) 100%);
+    background:
+        radial-gradient(ellipse at 20% 50%, rgba(78, 204, 163, 0.08) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 50%, rgba(255, 77, 109, 0.08) 0%, transparent 50%),
+        linear-gradient(180deg, var(--bg-dark) 0%, var(--bg-medium) 100%);
     justify-content: center;
     align-items: center;
     flex-direction: column;
@@ -57,7 +77,7 @@ body {
 
 .title-content {
     text-align: center;
-    animation: fadeIn 1s ease-in;
+    animation: fadeIn 0.8s ease-out;
 }
 
 @keyframes fadeIn {
@@ -67,87 +87,127 @@ body {
 
 .title-content h1 {
     font-size: 4rem;
+    font-weight: 700;
     color: var(--accent);
-    text-shadow: 0 0 20px var(--accent);
+    text-shadow: 0 0 40px var(--accent-glow), 0 0 80px rgba(255, 77, 109, 0.15);
     letter-spacing: 0.5rem;
     margin-bottom: 0.5rem;
 }
 
 .subtitle {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
+    font-weight: 500;
     color: var(--text-dim);
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
+    letter-spacing: 0.15rem;
 }
 
 .title-art pre {
     color: var(--accent-green);
-    font-size: 0.9rem;
-    line-height: 1.2;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    line-height: 1.3;
     margin: 2rem 0;
+    opacity: 0.7;
 }
 
 .instruction {
-    color: var(--text);
-    line-height: 1.8;
-    margin-bottom: 2rem;
+    color: var(--text-dim);
+    font-size: 1rem;
+    line-height: 2;
+    margin-bottom: 2.5rem;
+    font-weight: 400;
 }
 
 .stamp-btn {
-    background: var(--accent);
+    background: linear-gradient(135deg, var(--accent) 0%, #d63384 100%);
     color: white;
     border: none;
     padding: 1rem 3rem;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
     font-family: inherit;
     cursor: pointer;
-    transition: all 0.3s ease;
-    text-transform: uppercase;
-    letter-spacing: 0.1rem;
+    transition: all var(--transition);
+    letter-spacing: 0.08rem;
+    border-radius: var(--radius-sm);
+    position: relative;
+    overflow: hidden;
+}
+
+.stamp-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity var(--transition);
 }
 
 .stamp-btn:hover {
-    background: #ff6b6b;
-    transform: scale(1.05);
-    box-shadow: 0 0 20px var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px var(--accent-glow);
 }
 
-/* ゲーム画面 */
+.stamp-btn:hover::before {
+    opacity: 1;
+}
+
+.stamp-btn:active {
+    transform: translateY(0px);
+    box-shadow: 0 2px 8px var(--accent-glow);
+}
+
+/* ==============================
+   ゲーム画面
+   ============================== */
 #game-screen {
     flex-direction: column;
-    background: var(--bg-dark);
+    background:
+        radial-gradient(ellipse at 50% 0%, rgba(22, 33, 62, 0.8) 0%, transparent 60%),
+        var(--bg-dark);
 }
 
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 2rem;
-    background: var(--bg-medium);
-    border-bottom: 3px solid var(--accent);
+    padding: 0.8rem 2rem;
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--glass-border);
 }
 
 .header-left, .header-right {
     display: flex;
     gap: 1.5rem;
+    align-items: center;
 }
 
 .day-counter {
-    font-size: 1.2rem;
+    font-size: 1rem;
+    font-weight: 600;
     color: var(--accent-green);
 }
 
 .title {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
+    font-weight: 700;
     color: var(--accent);
-    letter-spacing: 0.3rem;
+    letter-spacing: 0.25rem;
 }
 
 .score {
     color: var(--accent-green);
+    font-weight: 600;
+    font-size: 0.95rem;
 }
 
 .strikes {
     color: var(--accent);
+    font-weight: 600;
+    font-size: 0.95rem;
 }
 
 main {
@@ -167,9 +227,11 @@ main {
 }
 
 .booth-window {
-    background: linear-gradient(180deg, #2a2a4a 0%, #1a1a2e 100%);
-    border: 4px solid #444;
-    border-radius: 10px;
+    background:
+        radial-gradient(ellipse at 50% 60%, rgba(78, 204, 163, 0.05) 0%, transparent 50%),
+        linear-gradient(180deg, rgba(42, 42, 74, 0.6) 0%, rgba(15, 15, 26, 0.8) 100%);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius);
     padding: 2rem;
     flex: 1;
     display: flex;
@@ -177,6 +239,8 @@ main {
     align-items: center;
     overflow: hidden;
     position: relative;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
 }
 
 #character-display {
@@ -184,9 +248,10 @@ main {
 }
 
 .character-avatar {
-    font-size: 6rem;
+    font-size: 5.5rem;
     margin-bottom: 1rem;
-    animation: bobbing 2s ease-in-out infinite;
+    animation: bobbing 2.5s ease-in-out infinite;
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
 }
 
 .police-avatar {
@@ -256,20 +321,23 @@ main {
 
 @keyframes bobbing {
     0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
+    50% { transform: translateY(-8px); }
 }
 
 .character-role {
-    font-size: 1rem;
+    font-size: 0.85rem;
+    font-weight: 600;
     color: var(--accent-green);
     text-transform: uppercase;
     letter-spacing: 0.2rem;
+    opacity: 0.9;
 }
 
 .character-name {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
+    font-weight: 600;
     color: var(--text);
-    margin-top: 0.5rem;
+    margin-top: 0.4rem;
 }
 
 .team-members {
@@ -294,17 +362,20 @@ main {
 }
 
 .dialogue-box {
-    background: var(--bg-medium);
-    border: 2px solid var(--bg-light);
-    border-radius: 10px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius);
     padding: 1.5rem;
-    min-height: 120px;
+    min-height: 110px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
 }
 
 .dialogue-box p {
-    font-size: 1.1rem;
-    line-height: 1.6;
+    font-size: 1.05rem;
+    line-height: 1.7;
     color: var(--text);
+    font-weight: 400;
 }
 
 /* 右パネル */
@@ -316,50 +387,70 @@ main {
 }
 
 .document {
-    background: var(--paper);
-    color: #333;
-    border-radius: 5px;
+    background: linear-gradient(135deg, var(--paper) 0%, var(--paper-dark) 100%);
+    color: #2d2d2d;
+    border-radius: var(--radius);
     padding: 1.5rem;
     flex: 1;
     position: relative;
-    box-shadow: 5px 5px 15px rgba(0,0,0,0.3);
+    box-shadow:
+        0 4px 24px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5);
     overflow-y: auto;
+}
+
+.document::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent) 0%, var(--accent-green) 100%);
+    border-radius: var(--radius) var(--radius) 0 0;
 }
 
 .document-header {
     text-align: center;
-    font-size: 1.2rem;
-    font-weight: bold;
-    border-bottom: 2px solid #333;
-    padding-bottom: 0.5rem;
+    font-size: 1.15rem;
+    font-weight: 700;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.15);
+    padding-bottom: 0.6rem;
     margin-bottom: 1rem;
+    margin-top: 0.3rem;
+    color: #1a1a1a;
 }
 
 .document-content {
-    font-size: 0.95rem;
-    line-height: 1.6;
+    font-size: 0.92rem;
+    line-height: 1.7;
 }
 
 .document-content .field {
-    margin-bottom: 0.8rem;
+    margin-bottom: 0.7rem;
+    padding: 0.3rem 0;
+    border-bottom: 1px dashed rgba(0, 0, 0, 0.08);
 }
 
 .document-content .label {
-    font-weight: bold;
+    font-weight: 600;
     color: #555;
+    font-size: 0.85rem;
 }
 
 .document-content .value {
-    color: #222;
+    color: #1a1a1a;
+    font-weight: 500;
 }
 
 .document-content .warning {
     color: var(--stamp-red);
-    font-weight: bold;
+    font-weight: 700;
 }
 
 .document-content .good {
     color: var(--stamp-green);
+    font-weight: 600;
 }
 
 .stamp-area {
@@ -376,7 +467,7 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-weight: bold;
+    font-weight: 700;
     font-size: 1rem;
     border-radius: 50%;
     transform: rotate(-15deg);
@@ -391,32 +482,37 @@ main {
 .stamp.approved {
     border: 4px solid var(--stamp-green);
     color: var(--stamp-green);
+    box-shadow: 0 0 12px rgba(22, 163, 74, 0.3);
 }
 
 .stamp.denied {
     border: 4px solid var(--stamp-red);
     color: var(--stamp-red);
+    box-shadow: 0 0 12px rgba(220, 38, 38, 0.3);
 }
 
 .rule-book {
-    background: #2d2d44;
-    border: 2px solid var(--accent);
-    border-radius: 5px;
-    padding: 1rem;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius);
+    padding: 1rem 1.2rem;
     max-height: 200px;
     overflow-y: auto;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
 }
 
 .rule-header {
-    font-size: 1rem;
-    color: var(--accent);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--accent-green);
     margin-bottom: 0.5rem;
 }
 
 .rule-content {
     font-size: 0.85rem;
-    color: var(--text);
-    line-height: 1.5;
+    color: var(--text-dim);
+    line-height: 1.6;
 }
 
 .rule-content ul {
@@ -425,14 +521,19 @@ main {
 }
 
 .rule-content li {
-    margin-bottom: 0.3rem;
+    margin-bottom: 0.4rem;
 }
 
-/* フッター */
+.rule-content strong {
+    color: var(--text);
+}
+
+/* ==============================
+   フッター（ボタンエリア）
+   ============================== */
 footer {
-    padding: 1rem 2rem 2rem 2rem;
-    background: var(--bg-medium);
-    border-top: 3px solid var(--bg-light);
+    padding: 0.6rem 2rem 0.8rem;
+    background: transparent;
     flex-shrink: 0;
     z-index: 100;
 }
@@ -440,62 +541,90 @@ footer {
 .action-buttons {
     display: flex;
     justify-content: center;
-    gap: 2rem;
+    gap: 1.2rem;
+    max-width: 500px;
+    margin: 0 auto;
 }
 
 .action-btn {
-    padding: 1rem 3rem;
-    font-size: 1.2rem;
+    flex: 1;
+    padding: 1rem 2rem;
+    font-size: 1.15rem;
+    font-weight: 600;
     font-family: inherit;
     border: none;
     cursor: pointer;
-    transition: all 0.3s ease;
-    text-transform: uppercase;
-    letter-spacing: 0.1rem;
+    transition: all var(--transition);
+    letter-spacing: 0.05rem;
+    border-radius: var(--radius-sm);
+    position: relative;
+    overflow: hidden;
+    min-height: 52px;
 }
 
 .action-btn:disabled {
-    opacity: 0.5;
+    opacity: 0.4;
     cursor: not-allowed;
+    transform: none !important;
+    box-shadow: none !important;
 }
 
 .action-btn.approve {
-    background: var(--stamp-green);
+    background: linear-gradient(135deg, var(--stamp-green) 0%, #059669 100%);
     color: white;
 }
 
 .action-btn.approve:hover:not(:disabled) {
-    background: #2ecc71;
-    box-shadow: 0 0 20px var(--stamp-green);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px var(--accent-green-glow);
+}
+
+.action-btn.approve:active:not(:disabled) {
+    transform: translateY(0px);
 }
 
 .action-btn.deny {
-    background: var(--stamp-red);
+    background: linear-gradient(135deg, var(--stamp-red) 0%, #b91c1c 100%);
     color: white;
 }
 
 .action-btn.deny:hover:not(:disabled) {
-    background: #e74c3c;
-    box-shadow: 0 0 20px var(--stamp-red);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px var(--accent-glow);
 }
 
-/* 結果画面 */
+.action-btn.deny:active:not(:disabled) {
+    transform: translateY(0px);
+}
+
+/* ==============================
+   結果画面
+   ============================== */
 #result-screen {
-    background: rgba(0,0,0,0.9) !important;
+    background: rgba(0, 0, 0, 0.85) !important;
     justify-content: center !important;
     align-items: center !important;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
 }
 
 .result-content {
     background: var(--bg-medium);
-    padding: 1.5rem;
-    border-radius: 10px;
+    padding: 2rem;
+    border-radius: var(--radius);
     text-align: center;
     max-width: 600px;
     width: calc(100% - 2rem);
-    border: 2px solid var(--accent);
+    border: 1px solid var(--glass-border);
     max-height: 80vh;
     overflow-y: auto;
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.4);
+    animation: resultPopIn 0.3s ease-out;
+}
+
+@keyframes resultPopIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
 }
 
 .result-content .stamp-btn {
@@ -503,26 +632,30 @@ footer {
 }
 
 .result-content h2 {
-    font-size: 2rem;
+    font-size: 1.8rem;
+    font-weight: 700;
     margin-bottom: 1.5rem;
 }
 
 .result-content h2.correct {
     color: var(--accent-green);
+    text-shadow: 0 0 24px var(--accent-green-glow);
 }
 
 .result-content h2.incorrect {
     color: var(--accent);
+    text-shadow: 0 0 24px var(--accent-glow);
 }
 
 .result-feedback {
-    font-size: 1rem;
+    font-size: 0.95rem;
     line-height: 1.8;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     text-align: left;
-    background: var(--bg-dark);
+    background: rgba(0, 0, 0, 0.3);
     padding: 1.5rem;
-    border-radius: 5px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--glass-border);
 }
 
 .result-feedback .explanation {
@@ -532,16 +665,22 @@ footer {
 .result-feedback .practice {
     color: var(--accent-green);
     margin-top: 1rem;
+    font-weight: 500;
 }
 
 .result-feedback .antipattern {
     color: var(--accent);
-    margin-top: 1rem;
+    margin-top: 0.8rem;
+    font-weight: 500;
 }
 
-/* ゲームオーバー */
+/* ==============================
+   ゲームオーバー
+   ============================== */
 #gameover-screen {
-    background: linear-gradient(135deg, var(--bg-dark) 0%, #0a0a15 100%);
+    background:
+        radial-gradient(ellipse at 50% 30%, rgba(255, 77, 109, 0.06) 0%, transparent 50%),
+        linear-gradient(180deg, var(--bg-dark) 0%, #050510 100%);
 }
 
 .gameover-content {
@@ -550,42 +689,54 @@ footer {
     width: calc(100% - 2rem);
     padding: 1.5rem;
     overflow-y: auto;
-    max-height: 80vh;
+    max-height: 92vh;
 }
 
 .gameover-content .stamp-btn {
-    margin-top: 1.5rem;
+    margin-top: 1.2rem;
+    margin-bottom: 0.5rem;
 }
 
 .gameover-content h2 {
-    font-size: 3rem;
+    font-size: 2rem;
+    font-weight: 700;
     color: var(--accent);
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 0 32px var(--accent-glow);
 }
 
 .final-score {
-    font-size: 2rem;
+    font-size: 1.4rem;
+    font-weight: 700;
     color: var(--accent-green);
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
 }
 
 .final-stats {
     color: var(--text-dim);
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
+    line-height: 1.6;
 }
 
 .learned-section {
-    background: var(--bg-medium);
-    padding: 1.5rem;
-    border-radius: 10px;
-    margin-bottom: 2rem;
+    background: var(--glass-bg);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    padding: 1.2rem;
+    border-radius: var(--radius);
+    margin-bottom: 1rem;
     text-align: left;
+    border: 1px solid var(--glass-border);
+    max-height: 40vh;
+    overflow-y: auto;
 }
 
 .learned-section h3 {
     color: var(--accent-green);
-    margin-bottom: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
     text-align: center;
+    font-size: 1.05rem;
 }
 
 .learned-section ul {
@@ -593,11 +744,14 @@ footer {
 }
 
 .learned-section li {
-    margin-bottom: 0.5rem;
-    line-height: 1.5;
+    margin-bottom: 0.6rem;
+    line-height: 1.6;
+    color: var(--text);
 }
 
-/* アニメーション */
+/* ==============================
+   アニメーション
+   ============================== */
 .shake {
     animation: shake 0.5s ease-in-out;
 }
@@ -608,64 +762,66 @@ footer {
     75% { transform: translateX(10px); }
 }
 
-/* スクロールバー */
+/* ==============================
+   スクロールバー
+   ============================== */
 ::-webkit-scrollbar {
-    width: 8px;
+    width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-    background: var(--bg-dark);
+    background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: var(--bg-light);
-    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--accent);
+    background: rgba(255, 255, 255, 0.25);
 }
 
-/* ===================
+/* ==============================
    モバイル対応
-   =================== */
+   ============================== */
 @media (max-width: 768px) {
     .title-content h1 {
         font-size: 2.5rem;
         letter-spacing: 0.2rem;
     }
-    
+
     .subtitle {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
     }
-    
+
     .title-art {
         display: none;
     }
-    
+
     .instruction {
         font-size: 0.9rem;
         padding: 0 1rem;
     }
-    
+
     header {
         flex-wrap: wrap;
         padding: 0.5rem 1rem;
         gap: 0.5rem;
     }
-    
+
     .header-left, .header-right {
         gap: 0.8rem;
         font-size: 0.85rem;
     }
-    
+
     .title {
         font-size: 1rem;
         order: -1;
         width: 100%;
         text-align: center;
     }
-    
+
     #game-screen.active {
         height: 100%;
         height: 100dvh;
@@ -673,7 +829,7 @@ footer {
         display: flex;
         flex-direction: column;
     }
-    
+
     main {
         flex-direction: column;
         padding: 0.5rem;
@@ -683,159 +839,166 @@ footer {
         min-height: 0;
         padding-bottom: 0.5rem;
     }
-    
+
     .left-panel, .right-panel {
         flex: none;
     }
-    
+
     .booth-window {
         padding: 1rem;
         min-height: 150px;
     }
-    
+
     .character-avatar {
         font-size: 4rem;
     }
-    
+
     .character-role {
-        font-size: 0.8rem;
+        font-size: 0.75rem;
     }
-    
+
     .character-name {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
     }
-    
+
     .team-members {
         font-size: 1.5rem;
     }
-    
+
     .dialogue-box {
         padding: 1rem;
         min-height: 80px;
     }
-    
+
     .dialogue-box p {
-        font-size: 0.95rem;
+        font-size: 0.92rem;
     }
-    
+
     .document {
         padding: 1rem;
         max-height: none;
         overflow-y: visible;
     }
-    
+
     .document-header {
         font-size: 1rem;
     }
-    
+
     .document-content {
-        font-size: 0.85rem;
+        font-size: 0.82rem;
     }
-    
+
     .stamp-area {
         width: 70px;
         height: 70px;
         bottom: 10px;
         right: 10px;
     }
-    
+
     .stamp {
         font-size: 0.7rem;
     }
-    
+
     .rule-book {
         padding: 0.8rem;
         max-height: none;
     }
-    
+
     .rule-header {
         font-size: 0.85rem;
     }
-    
+
     .rule-content {
         font-size: 0.75rem;
     }
-    
+
     footer {
         position: fixed;
         bottom: 0;
         left: 0;
         right: 0;
-        padding: 0.8rem 1rem;
-        padding-bottom: max(0.8rem, env(safe-area-inset-bottom));
+        padding: 0.6rem 0.8rem;
+        padding-bottom: max(0.6rem, env(safe-area-inset-bottom));
         z-index: 100;
+        background: rgba(15, 15, 26, 0.92);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-top: 1px solid var(--glass-border);
     }
-    
+
     #game-screen main {
-        padding-bottom: 80px;
+        padding-bottom: 90px;
     }
-    
+
     .action-buttons {
-        gap: 1rem;
+        gap: 0.8rem;
+        max-width: 100%;
     }
-    
+
     .action-btn {
-        padding: 0.8rem 1.5rem;
-        font-size: 1rem;
+        padding: 1rem 1rem;
+        font-size: 1.05rem;
+        min-height: 52px;
+        flex: 1;
     }
-    
+
     /* 結果画面 */
     .result-content {
-        padding: 1rem;
+        padding: 1.2rem;
         margin: 0.5rem;
         max-width: 95%;
     }
-    
+
     .result-content h2 {
         font-size: 1.3rem;
         margin-bottom: 1rem;
     }
-    
+
     .result-feedback {
         font-size: 0.85rem;
         padding: 0.8rem;
     }
-    
+
     #result-screen .stamp-btn {
         margin-bottom: 2.5rem;
     }
-    
+
     /* ゲームオーバー */
     .gameover-content {
         padding: 0.5rem;
     }
-    
+
     .gameover-content h2 {
         font-size: 1.5rem;
         margin-bottom: 0.5rem;
     }
-    
+
     .final-score {
         font-size: 1.2rem;
     }
-    
+
     .final-stats {
         font-size: 0.9rem;
     }
-    
+
     .learned-section {
         padding: 0.8rem;
         margin-bottom: 0.5rem;
     }
-    
+
     .learned-section h3 {
         font-size: 1rem;
     }
-    
+
     .learned-section ul {
         margin-left: 1rem;
         font-size: 0.8rem;
     }
-    
+
     #gameover-screen .stamp-btn {
         margin-bottom: 2.5rem;
     }
-    
+
     .stamp-btn {
         padding: 0.8rem 2rem;
         font-size: 1rem;
@@ -847,21 +1010,21 @@ footer {
     .title-content h1 {
         font-size: 2rem;
     }
-    
+
     .character-avatar {
         font-size: 3rem;
     }
-    
+
     .booth-window {
         min-height: 100px;
         padding: 0.8rem;
     }
-    
+
     .action-btn {
         padding: 0.7rem 1rem;
         font-size: 0.9rem;
     }
-    
+
     .dialogue-box {
         min-height: 60px;
         padding: 0.8rem;
