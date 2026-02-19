@@ -490,22 +490,19 @@ footer {
 /* ゲームオーバー */
 #gameover-screen {
     background: linear-gradient(135deg, var(--bg-dark) 0%, #0a0a15 100%);
-    flex-direction: column;
 }
 
 .gameover-content {
     text-align: center;
     max-width: 700px;
-    padding: 1rem;
-    flex: 1;
+    width: calc(100% - 2rem);
+    padding: 1.5rem;
     overflow-y: auto;
-    margin: 0.5rem;
+    max-height: 80vh;
 }
 
-#gameover-screen .stamp-btn {
-    margin: 1rem;
-    margin-bottom: 2.5rem;
-    flex-shrink: 0;
+.gameover-content .stamp-btn {
+    margin-top: 1.5rem;
 }
 
 .gameover-content h2 {
