@@ -96,10 +96,16 @@ class ScrumGuard {
     }
 
     startGame() {
-        this.shuffledScenarios = this.prepareScenarios();
-        this.showScreen('game-screen');
-        this.updateRules();
-        this.loadScenario();
+        try {
+            this.shuffledScenarios = this.prepareScenarios();
+            console.log('Prepared scenarios:', this.shuffledScenarios.length);
+            this.showScreen('game-screen');
+            this.updateRules();
+            this.loadScenario();
+        } catch (e) {
+            console.error('startGame error:', e);
+            alert('ゲーム開始エラー: ' + e.message);
+        }
     }
 
     showScreen(screenId) {
@@ -114,11 +120,13 @@ class ScrumGuard {
     }
 
     loadScenario() {
+        console.log('loadScenario called, index:', this.scenarioIndex, 'total:', this.shuffledScenarios.length);
         if (this.scenarioIndex >= this.shuffledScenarios.length) {
             this.endGame();
             return;
         }
         this.currentScenario = this.shuffledScenarios[this.scenarioIndex];
+        console.log('Loading scenario:', this.currentScenario?.id, this.currentScenario?.character?.name);
         const s = this.currentScenario;
         
         const avatar = document.getElementById('avatar');
@@ -165,7 +173,30 @@ class ScrumGuard {
             knowledgeSharing: '知識共有',
             smRole: 'SMの役割',
             teamAutonomy: 'チーム自律性',
-            notes: '備考'
+            notes: '備考',
+            estimation: '見積もり',
+            planningPoker: 'プランニングポーカー',
+            backlogRefinement: 'バックログリファインメント',
+            stakeholderComm: 'ステークホルダー連携',
+            sprintReview: 'スプリントレビュー',
+            stakeholderFeedback: 'ステークホルダーFB',
+            definitionOfDone: '完成の定義',
+            testing: 'テスト',
+            impediments: '障害対応',
+            teamSupport: 'チーム支援',
+            credential: '資格・経歴',
+            transparency: '透明性',
+            backlogPriority: 'バックログ優先順位',
+            poDecision: 'PO意思決定',
+            velocity: 'ベロシティ',
+            predictability: '予測可能性',
+            focus: 'フォーカス',
+            deadline: '納期',
+            qualityCompromise: '品質妥協',
+            crossFunctional: 'クロスファンクショナル',
+            tShaped: 'T型スキル',
+            methodology: '手法',
+            threeQuestions: '3つの質問'
         };
         return labels[key] || key;
     }
