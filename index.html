@@ -10,37 +10,35 @@
     <link rel="stylesheet" href="style.css?v=4">
 </head>
 <body>
-    <div id="game-container">
+    <div id="game-container" class="checkpoint-theme">
         <!-- タイトル画面 -->
-        <div id="title-screen" class="screen active">
-            <div class="title-content">
+        <div id="title-screen" class="screen active" role="region" aria-label="タイトル画面">
+            <div class="title-content panel">
+                <p class="eyebrow">SCRUM REVIEW CHECKPOINT</p>
                 <h1>SCRUM GUARD</h1>
                 <p class="subtitle">スクラムの門番</p>
-                <div class="title-art">
-                    <pre>
-    ╔═══════════════════════════════╗
-    ║  AGILE CHECKPOINT  ║
-    ║      🛂 STOP 🛂      ║
-    ╚═══════════════════════════════╝
-                    </pre>
+                <div class="title-art" aria-hidden="true">
+                    <pre>╔═ AGILE CHECKPOINT ═╗
+║   PASS OR ARREST   ║
+╚════════════════════╝</pre>
                 </div>
-                <p class="instruction">あなたはスクラムゲートの検問官。<br>正しいスクラムを実践するチームを通し、<br>アンチパターンを踏むチームを連行せよ。</p>
-                <button id="start-btn" class="stamp-btn">ゲーム開始</button>
+                <p class="instruction">あなたはスクラムゲートの検問官。<br>正しい実践は通過、アンチパターンは連行。</p>
+                <button id="start-btn" class="stamp-btn" aria-label="ゲーム開始">ゲーム開始</button>
             </div>
         </div>
 
         <!-- ゲーム画面 -->
-        <div id="game-screen" class="screen">
+        <div id="game-screen" class="screen" role="region" aria-label="ゲーム画面">
             <header>
                 <div class="header-left">
-                    <span class="day-counter">スプリント <span id="day">1</span></span>
+                    <span class="status-chip day-counter">スプリント <span id="day">1</span></span>
                 </div>
                 <div class="header-center">
-                    <span class="title">SCRUM GUARD</span>
+                    <span class="title">SCRUM GUARD / CHECKPOINT</span>
                 </div>
                 <div class="header-right">
-                    <span class="score">スコア: <span id="score">0</span></span>
-                    <span class="strikes">❌ <span id="strikes">0</span>/3</span>
+                    <span class="status-chip score">スコア <span id="score">0</span></span>
+                    <span class="status-chip strikes">ミス <span id="strikes">0</span>/3</span>
                 </div>
             </header>
 
@@ -48,8 +46,8 @@
                 <!-- 左側：チーム情報 -->
                 <div class="left-panel">
                     <div class="booth-window" id="booth-window">
-                        <div class="police-avatar" id="police">👮</div>
-                        <div id="character-display">                            
+                        <div class="police-avatar" id="police" aria-hidden="true">👮</div>
+                        <div id="character-display">
                             <div class="character-avatar" id="avatar">👤</div>
                             <div class="character-role" id="role">役職</div>
                             <div class="character-name" id="char-name">名前</div>
@@ -57,7 +55,8 @@
                         </div>
                     </div>
                     <div class="dialogue-box">
-                        <p id="dialogue">「次の方、どうぞ。」</p>
+                        <p class="section-label">申請者の発言</p>
+                        <p id="dialogue" aria-live="polite">「次の方、どうぞ。」</p>
                     </div>
                 </div>
 
@@ -65,12 +64,12 @@
                 <div class="right-panel">
                     <div class="document" id="document">
                         <div class="document-header">チーム申請書</div>
-                        <div class="document-content" id="document-content">
+                        <div class="document-content" id="document-content" aria-live="polite">
                             <!-- 動的に内容が入る -->
                         </div>
                         <div class="stamp-area" id="stamp-area"></div>
                     </div>
-                    
+
                     <div class="rule-book" id="rule-book">
                         <div class="rule-header">📖 スクラムガイド (参照用)</div>
                         <div class="rule-content" id="rule-content">
@@ -90,21 +89,22 @@
                         ✗ 連行
                     </button>
                 </div>
+                <p class="action-hint">正しいスクラム実践なら通過、アンチパターンなら連行</p>
             </footer>
         </div>
 
         <!-- 結果画面 -->
-        <div id="result-screen" class="screen" style="justify-content: center; align-items: center;">
-            <div class="result-content">
+        <div id="result-screen" class="screen" style="justify-content: center; align-items: center;" role="region" aria-label="判定結果画面">
+            <div class="result-content panel">
                 <h2 id="result-title">判定結果</h2>
-                <div class="result-feedback" id="result-feedback"></div>
-                <button id="next-btn" class="stamp-btn">次へ</button>
+                <div class="result-feedback" id="result-feedback" aria-live="polite"></div>
+                <button id="next-btn" class="stamp-btn" aria-label="次の申請へ">次へ</button>
             </div>
         </div>
 
         <!-- ゲームオーバー画面 -->
-        <div id="gameover-screen" class="screen" style="justify-content: center; align-items: center;">
-            <div class="gameover-content">
+        <div id="gameover-screen" class="screen" style="justify-content: center; align-items: center;" role="region" aria-label="ゲームオーバー画面">
+            <div class="gameover-content panel">
                 <h2>業務終了</h2>
                 <p class="final-score">最終スコア: <span id="final-score">0</span></p>
                 <p class="final-stats" id="final-stats"></p>
@@ -112,7 +112,7 @@
                     <h3>今日学んだこと</h3>
                     <ul id="learned-list"></ul>
                 </div>
-                <button id="restart-btn" class="stamp-btn">もう一度プレイ</button>
+                <button id="restart-btn" class="stamp-btn" aria-label="もう一度プレイ">もう一度プレイ</button>
             </div>
         </div>
     </div>
