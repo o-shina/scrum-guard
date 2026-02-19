@@ -175,24 +175,64 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 }
 
 #character-display {
     text-align: center;
 }
 
+.avatar-row {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    min-height: 7rem;
+    position: relative;
+    width: 100%;
+}
+
 .character-avatar {
     font-size: 6rem;
     margin-bottom: 1rem;
     animation: bobbing 2s ease-in-out infinite;
+    position: relative;
+    z-index: 1;
 }
 
+.police-avatar {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    margin-left: -0.5rem;
+    opacity: 0;
+    pointer-events: none;
+    position: relative;
+    z-index: 2;
+    transform: translateX(150px);
+}
+
+/* 入場 */
 .character-avatar.enter {
     animation: slideIn 0.5s ease-out;
 }
 
-.character-avatar.exit {
+/* 通過（右へ退場） */
+.character-avatar.exit-approve {
     animation: slideOut 0.5s ease-in forwards;
+}
+
+/* 連行アニメーション: フェーズ1 - 警察登場 */
+.avatar-row.arrest-in .police-avatar {
+    animation: policeSlideIn 0.5s ease-out forwards;
+}
+
+/* 連行アニメーション: フェーズ2 - 一緒に左へ退場 */
+.avatar-row.arrest-out .character-avatar {
+    animation: arrestedExit 0.7s ease-in forwards;
+}
+
+.avatar-row.arrest-out .police-avatar {
+    opacity: 1;
+    animation: policeExit 0.7s ease-in forwards;
 }
 
 @keyframes slideIn {
@@ -203,6 +243,21 @@ main {
 @keyframes slideOut {
     0% { transform: translateX(0); opacity: 1; }
     100% { transform: translateX(200px); opacity: 0; }
+}
+
+@keyframes policeSlideIn {
+    0% { transform: translateX(150px); opacity: 0; }
+    100% { transform: translateX(0px); opacity: 1; }
+}
+
+@keyframes arrestedExit {
+    0% { transform: translateX(0); opacity: 1; }
+    100% { transform: translateX(-400px); opacity: 0; }
+}
+
+@keyframes policeExit {
+    0% { transform: translateX(0px); opacity: 1; }
+    100% { transform: translateX(-400px); opacity: 0; }
 }
 
 @keyframes bobbing {
