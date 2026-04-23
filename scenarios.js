@@ -10,17 +10,17 @@ const SCENARIOS = [
             sprintLength: "2週間",
             dailyScrum: "週1回のみ",
             poParticipation: "スプリントレビューのみ参加",
-            notes: "POがデイリースクラムに不参加"
+            notes: "プロダクトオーナーがデイリースクラムに不参加"
         },
         isAntipattern: true,
-        explanation: "デイリースクラムは「毎日」行うものです。POは必須ではありませんが、チームが求めれば参加します。",
+        explanation: "デイリースクラムは「毎日」行うものです。プロダクトオーナーは必須ではありませんが、チームが求めれば参加します。",
         practice: "デイリースクラムは15分以内で毎日実施する",
         antipattern: "デイリースクラムの頻度を下げる"
     },
     {
         id: 2, difficulty: 1,
         character: { avatar: "👩‍💻", role: "スクラムマスター", name: "鈴木" },
-        dialogue: "「レトロスペクティブで決めた改善アクション、ちゃんと次のスプリントで実施してます！」",
+        dialogue: "「スプリントレトロスペクティブで決めた改善アクション、ちゃんと次のスプリントで実施してます！」",
         document: {
             teamName: "チームベータ",
             sprintLength: "2週間",
@@ -75,29 +75,29 @@ const SCENARIOS = [
             sprintLength: "2週間",
             smRole: "マネージャーへの進捗報告",
             teamAutonomy: "低い",
-            notes: "SMが上司への報告係になっている"
+            notes: "スクラムマスターが上司への報告係になっている"
         },
         isAntipattern: true,
         explanation: "スクラムマスターはマネージャーではなく、チームのサーバントリーダーです。報告係ではありません。",
-        practice: "SMはスクラムを実践し、スクラムチームの有効性を高める役割",
-        antipattern: "SMを進捗管理や報告係にする"
+        practice: "スクラムマスターはスクラムを実践し、スクラムチームの有効性を高める役割",
+        antipattern: "スクラムマスターを進捗管理や報告係にする"
     },
     // --- 追加シナリオ 6-10 ---
     {
         id: 6, difficulty: 2,
         character: { avatar: "👨‍🦳", role: "開発者", name: "伊藤" },
-        dialogue: "「見積もりは私が全部やっておきました。効率的でしょ？」",
+        dialogue: "「見積りは私が全部やっておきました。効率的でしょ？」",
         document: {
             teamName: "チームゼータ",
             sprintLength: "2週間",
             estimation: "リーダーが単独で実施",
             planningPoker: "未実施",
-            notes: "チーム全員での見積もりをしていない"
+            notes: "チーム全員での見積りをしていない"
         },
         isAntipattern: true,
-        explanation: "見積もりはチーム全員で行うべきです。プランニングポーカーなどで全員の知見を集めることで精度が上がります。",
-        practice: "見積もりはチーム全員で行う",
-        antipattern: "一人が見積もりを決める"
+        explanation: "見積りはチーム全員で行うべきです。プランニングポーカーなどで全員の知見を集めることで精度が上がります。",
+        practice: "見積りはチーム全員で行う",
+        antipattern: "1人が見積りを決める"
     },
     {
         id: 7, difficulty: 2,
@@ -111,7 +111,7 @@ const SCENARIOS = [
             notes: "プロダクトバックログが常に整理されている"
         },
         isAntipattern: false,
-        explanation: "POがプロダクトバックログを適切に管理し、ステークホルダーと連携するのは理想的です。",
+        explanation: "プロダクトオーナーがプロダクトバックログを適切に管理し、ステークホルダーと連携するのは理想的です。",
         practice: "プロダクトバックログリファインメントを定期的に行う",
         antipattern: "プロダクトバックログが整理されていない"
     },
@@ -154,14 +154,14 @@ const SCENARIOS = [
         document: {
             teamName: "チームカッパ",
             sprintLength: "2週間",
-            impediments: "SMが積極的に解決",
+            impediments: "スクラムマスターが積極的に解決",
             teamSupport: "環境整備に注力",
-            notes: "SMがサーバントリーダーとして機能"
+            notes: "スクラムマスターがサーバントリーダーとして機能"
         },
         isAntipattern: false,
         explanation: "スクラムマスターがチームの障害を取り除くように働きかけ、チームが集中できる環境を作るのは正しい役割です。",
-        practice: "SMはチームの障害を取り除く",
-        antipattern: "SMが障害を放置する"
+        practice: "スクラムマスターはチームの障害を取り除く",
+        antipattern: "スクラムマスターが障害を放置する"
     },
     // --- 追加シナリオ 11-15 + レジェンド ---
     {
@@ -221,12 +221,12 @@ const SCENARIOS = [
             sprintLength: "2週間",
             smRole: "タスク管理者",
             credential: "自称スクラム作成者",
-            notes: "SMはマネージャーではない"
+            notes: "スクラムマスターはマネージャーではない"
         },
         isAntipattern: true,
         explanation: "これは偶物です！スクラムマスターはマネージャーではなくサーバントリーダー。タスク割り振りはしません。",
-        practice: "SMはサーバントリーダー、ボスではない",
-        antipattern: "SMをマネージャーやボスとして扱う"
+        practice: "スクラムマスターはサーバントリーダー、ボスではない",
+        antipattern: "スクラムマスターをマネージャーやボスとして扱う"
     },
     {
         id: 15, difficulty: 1,
@@ -254,11 +254,11 @@ const SCENARIOS = [
             sprintLength: "2週間",
             backlogPriority: "頻繁に変更",
             poDecision: "曖昧",
-            notes: "POが順番を明確にしていない"
+            notes: "プロダクトオーナーが順番を明確にしていない"
         },
         isAntipattern: true,
         explanation: "プロダクトオーナーはプロダクトバックログアイテムの順番を明確にし、チームに明確な方向性を示す必要があります。",
-        practice: "POはプロダクトバックログアイテムの順番を明確にする",
+        practice: "プロダクトオーナーはプロダクトバックログアイテムの順番を明確にする",
         antipattern: "順番が曖昧なまま進める"
     },
     {
@@ -346,9 +346,9 @@ const SCENARIOS = [
 
 const RULES_BY_DAY = [
     ["デイリースクラムは毎日15分以内で実施", "スクラムマスターはマネージャーではない"],
-    ["スプリント中のスプリントゴール達成に影響のあるスコープ変更はしない", "レトロスペクティブの改善は実行する"],
+    ["スプリント中のスプリントゴール達成に影響のあるスコープ変更はしない", "スプリントレトロスペクティブの改善は実行する"],
     ["チームは自己組織化されるべき", "知識の属人化を防ぐ"],
-    ["Doneの定義を明確にする", "見積もりはチーム全員で行う"],
+    ["完成の定義を明確にする", "見積りはチーム全員で行う"],
     ["スプリントゴールを必ず設定する", "スクラムはフレームワークであり方法論ではない"],
     ["品質は交渉不可", "クロスファンクショナルチームを目指す"]
 ];
